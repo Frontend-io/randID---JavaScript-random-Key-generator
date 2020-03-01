@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RandID - Generate random IDs for your app</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=.8, user-scalable = no">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+</head>
+<body>
+
+	<div class="container">
+		<div class="block header">
+			<h1>RandID</h1>
+			<p>Generate random IDs for your application</p>
+			Twitter- <a href="https://twitter.com/@frontend_io">@frontend_io</a>
+		</div>
+		<div class="block demo">
+			<input type="number" value="" placeholder="Enter parameter">
+			<button id="gen">Generate ID</button>
+			<div class="output">
+				<button id="copy">Copy</button>
+				<textarea  id="screen" placeholder=":: - :: - :: - ::- ::"></textarea>
+			</div>
+		</div>
+		<h4>- What can you do with it? </h4>
+		<div class="block">
+			Generate random sequence of numbers and use them as IDs for your React app or any other app
+		</div>
+		<div class="block">
+			IDs generated are never the same- no duplicates
+		</div>
+		<h4>- How do i use it? </h4>
+		<div class="block">
+			Simply call the <code>randID()</code> function anywhere in your code where you need to supply IDs
+		</div>
+		<div class="block">
+			The function takes an optional parameter, <code>randID(x)</code> - where <code>x</code> is the length of the output of your ID depending on your need
+		</div>
+		<div class="block">
+			If a parameter is not supplied, it uses its default output length <code>[10]</code>, you can however modify this value in the source code 
+		</div>
+		<h4>- What else? </h4>
+		<div class="block">
+			The parameter passed must be greater than 1 and must be an <code>integer</code>, otherwise nothing will be returned and an error will be logged in the console telling you what happened
+		</div>
+	</div>
+
+
+<script src="randID.js" type="text/javascript"></script>
+<script type="text/javascript">
+	// New instance of randID for the DOM demo
+	const container = document.querySelector(".demo");
+	const input = container.querySelector("input")
+	const genBtn = container.querySelector("#gen")
+	const copyBtn = container.querySelector("#copy")
+	const output = container.querySelector("#screen")
+
+
+	genBtn.addEventListener("click", ()=>{
+		if (input.value) {
+			output.value = randID(input.value)
+			// Reset input
+			input.value = ""
+		}else{
+			output.value = randID()
+		}
+	})
+
+	copyBtn.addEventListener("click", ()=>{
+		 output.select();
+      	 document.execCommand("copy");
+      	 copyBtn.innerText = "Copied"
+      	 copyBtn.setAttribute("disabled", 'true')
+      	 setTimeout(()=>{
+      	 	 copyBtn.innerText = "Copy"
+      	 	 copyBtn.removeAttribute("disabled", 'false')
+      	 }, 3000)
+	})
+
+
+
+</script>
+</body>
+</html>
