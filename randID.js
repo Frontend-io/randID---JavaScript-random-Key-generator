@@ -56,4 +56,4 @@ function randID(){
     }
 }
 
-export default randID
+//export default randID
